@@ -129,7 +129,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
      inkscape:cx="289.82114"
-     inkscape:cy="743.8172"
+     inkscape:cy="301.52364"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -150,7 +150,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -169,6 +169,21 @@
        inkscape:export-filename="/home/luiz/Projects/ideas/icon_32x32.png"
        inkscape:export-xdpi="8.8421049"
        inkscape:export-ydpi="8.8421049" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:0.98584906;color:#000000;fill:url(#radialGradient3761);fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path2985"
+       sodipodi:cx="355.71429"
+       sodipodi:cy="296.64789"
+       sodipodi:rx="150"
+       sodipodi:ry="150"
+       d="m 505.71429,296.64789 c 0,82.84271 -67.15728,150 -150,150 -82.84271,0 -150,-67.15729 -150,-150 0,-82.84271 67.15729,-150 150,-150 82.84272,0 150,67.15729 150,150 z"
+       transform="translate(41.428572,-61.428572)" />
+    <path
+       id="path3763-1-2"
+       style="opacity:0.98584906;color:#000000;fill:url(#radialGradient3858);fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="M 463.99243,153.02133 C 418.08835,108.11862 354.67784,94.97389 306.8054,116.02547 c 46.07979,-10.04053 102.20853,7.2161 145.19024,49.26019 43.04607,42.10702 61.48748,97.92127 52.36962,144.25228 20.10466,-48.34894 5.58989,-111.55655 -40.37283,-156.51661 z M 334.73352,148.791 c -48.26967,42.34946 -66.20753,104.57413 -48.8646,153.91137 -6.50047,-46.71085 14.98253,-101.36163 60.17923,-141.01501 C 391.31252,121.97461 448.3696,107.83937 493.87123,120.46074 447.19463,96.73075 383.06486,106.38745 334.73352,148.791 z m 61.6486,-37.00975 c -65.38679,0 -120.90393,34.94419 -140.76158,83.46875 26.39303,-39.39965 79.53748,-66.3125 140.76158,-66.3125 61.31576,0 114.48144,27.00397 140.83382,66.5 -19.79175,-48.62128 -75.3635,-83.65625 -140.83382,-83.65625 z"
+       inkscape:connector-curvature="0" />
     <path
        sodipodi:type="arc"
        style="opacity:0.98584906;color:#000000;fill:url(#radialGradient3882);fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"

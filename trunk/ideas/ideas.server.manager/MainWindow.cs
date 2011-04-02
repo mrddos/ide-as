@@ -1,18 +1,19 @@
 using System;
 using Gtk;
 using System.Collections.Generic;
+using ideas.common;
 using ideas.server.manager;
 
 public partial class MainWindow : Gtk.Window
 {
-	static List<IdeasScadaApplication> scadaApplicationsList;
+	static IdeasScadaApplication scadaApplication;
 	
 	
 	public MainWindow () : base(Gtk.WindowType.Toplevel)
 	{
 		Build ();
 		
-		scadaApplicationsList = new List<IdeasScadaApplication>();
+		scadaApplication = null;
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -20,6 +21,7 @@ public partial class MainWindow : Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
+	
 	protected virtual void mnuFileExit_Click (object sender, System.EventArgs e)
 	{
 		this.Destroy();
@@ -45,17 +47,18 @@ public partial class MainWindow : Gtk.Window
 		
 		ResponseType RetVal = (ResponseType)fileChooserDialog.Run();
 		
-		// Handle the dialog's exit value
-		// read the file name from Fcd.Filename
-		if (RetVal == ResponseType.Ok) 
-		{
-			// Load application's configuration file
-			LoadScadaFile(fileChooserDialog.Filename);
-		} 
+		string fileName = fileChooserDialog.Filename;
 		
 		// Destroy the dialog
 		fileChooserDialog.Destroy();
 		
+		// Handle the dialog's exit value
+		// read the file name from Fcd.Filename
+		if (RetVal == ResponseType.Ok) 
+		{			
+			// Load application's configuration file
+			LoadScadaFile(fileName);
+		} 	
 	}
 	
 	
@@ -66,18 +69,29 @@ public partial class MainWindow : Gtk.Window
 	/// <param name="scadafile">
 	/// A <see cref="System.String"/>
 	/// </param>
-	public static void LoadScadaFile(string scadafile)
+	public void LoadScadaFile(string scadafile)
 	{
-		IdeasScadaApplication newScadaApp = new IdeasScadaApplication(scadafile);
-		scadaApplicationsList.Add(newScadaApp);
+		scadaApplication = new IdeasScadaApplication(scadafile);
 		
 		// Updates the list tree/expander
 		UpdateScadaApplicationsListTree();
 	}
 	
-	static void UpdateScadaApplicationsListTree ()
+	protected void UpdateScadaApplicationsListTree ()
 	{
-		throw new System.NotImplementedException ();
+		if(scadaApplication == null)
+		{
+			return;
+		}
+		
+		foreach(IdeasScadaProject project in scadaApplication.Projects)
+		{
+			expApplicationExpander.Add(new Label("teste"));
+			//expApplicationExpander.Add(;
+			
+		}
+		
+		
 	}
 
 }

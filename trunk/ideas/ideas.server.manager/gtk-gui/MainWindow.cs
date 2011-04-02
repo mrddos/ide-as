@@ -27,7 +27,7 @@ public partial class MainWindow
 
 	private global::Gtk.Alignment GtkAlignment;
 
-	private global::Gtk.Expander expander2;
+	private global::Gtk.Expander expApplicationExpander;
 
 	private global::Gtk.Label GtkLabel5;
 
@@ -96,16 +96,15 @@ public partial class MainWindow
 		this.GtkAlignment.Name = "GtkAlignment";
 		this.GtkAlignment.LeftPadding = ((uint)(12));
 		// Container child GtkAlignment.Gtk.Container+ContainerChild
-		this.expander2 = new global::Gtk.Expander (null);
-		this.expander2.CanFocus = true;
-		this.expander2.Name = "expander2";
-		this.expander2.Expanded = true;
+		this.expApplicationExpander = new global::Gtk.Expander (null);
+		this.expApplicationExpander.CanFocus = true;
+		this.expApplicationExpander.Name = "expApplicationExpander";
 		this.GtkLabel5 = new global::Gtk.Label ();
 		this.GtkLabel5.Name = "GtkLabel5";
 		this.GtkLabel5.LabelProp = global::Mono.Unix.Catalog.GetString ("GtkExpander");
 		this.GtkLabel5.UseUnderline = true;
-		this.expander2.LabelWidget = this.GtkLabel5;
-		this.GtkAlignment.Add (this.expander2);
+		this.expApplicationExpander.LabelWidget = this.GtkLabel5;
+		this.GtkAlignment.Add (this.expApplicationExpander);
 		this.frame2.Add (this.GtkAlignment);
 		this.fmeApplicationsFrame = new global::Gtk.Label ();
 		this.fmeApplicationsFrame.Name = "fmeApplicationsFrame";

@@ -75,7 +75,6 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="IdeasScadaApplication.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop" />

@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
-<scada software="IDEAS" version="1.0" />
-<application name="DemoApplication">
-    <screens>
-	<screen name="Tela" path="screens/tela.svg" type="svg" serverscriptlanguage="cs" clientscriptlanguage="js" />
-    </screens>
-    <configs>
-    	<tagswebservice address="http://localhost" port="8081" />
-    	<tagsdatabase path="configs/tagsdatabase.csv" type="csv" />
-    </configs>
-</application>
+<Application name="DemoApplication">
+	<Project name="DemoProject" path="DemoProject/">
+	    <Screen name="Tela" path="screens/tela.svg" type="svg" serverscriptlanguage="cs" clientscriptlanguage="js" />
+	    <TagsWebService address="http://localhost" port="8081" />
+		<TagsDataBase path="configs/tagsdatabase.csv" type="csv" />
+    </Project>
+</Application>

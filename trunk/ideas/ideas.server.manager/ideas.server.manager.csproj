@@ -81,7 +81,4 @@
       <Name>ideas.common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="gtk-sharp.dll" />
-  </ItemGroup>
 </Project>

@@ -10,6 +10,7 @@ namespace ideas.common
 	{
 		private string name;
 		private string filePath;
+		private IdeasScadaTagsDataBaseSourceType sourceType;
 		
 		/// <summary>
 		/// Constructs the class
@@ -20,7 +21,7 @@ namespace ideas.common
 		}
 			
 		
-		#region PROPERTIES
+		#region P R O P E R T I E S
 		
 		public string Name 
 		{
@@ -46,12 +47,34 @@ namespace ideas.common
 			}
 		}
 		
+		public IdeasScadaTagsDataBaseSourceType SourceType 
+		{
+			get 
+			{
+				return this.sourceType;
+			}
+			set 
+			{
+				sourceType = value;
+			}
+		}		
 		
+		#endregion
 		
-		#endregion PROPERTIES
+		public static IdeasScadaTagsDataBaseSourceType convertSourceTypeFromString(string strSourceType)
+		{
+			switch(strSourceType.ToLower())
+			{
+				case "csv": 
+					return IdeasScadaTagsDataBaseSourceType.CSV;
+				default:
+					throw new Exception("Unkown server script language: " + strSourceType);
+			}		
+		}
 	}
 	
-	enum IdeasScadaTagsDataBaseSourceType
+		
+	public enum IdeasScadaTagsDataBaseSourceType
 	{
 		CSV
 	}

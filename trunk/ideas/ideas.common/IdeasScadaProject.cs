@@ -62,6 +62,30 @@ namespace ideas.common
 			}
 		}
 		
+		public IdeasScadaTagsDataBase TagsDatabase 
+		{
+			get 
+			{
+				return this.tagsDatabase;
+			}
+			set 
+			{
+				tagsDatabase = value;
+			}
+		}
+
+		public IdeasScadaTagsWebService TagsWebService 
+		{
+			get 
+			{
+				return this.tagsWebService;
+			}
+			set 
+			{
+				tagsWebService = value;
+			}
+		}
+		
 		#endregion PROPERTIES
 	}
 }

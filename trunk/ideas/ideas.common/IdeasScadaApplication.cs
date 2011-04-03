@@ -9,6 +9,7 @@ namespace ideas.common
 	{
 		string rootPath;
 		string filePath;
+		string name;
 		List<IdeasScadaProject> projects = new List<IdeasScadaProject>();
 		
 		/// <summary>
@@ -35,6 +36,8 @@ namespace ideas.common
 			
 				XmlNodeList nodesList = xmlScadaFile.GetElementsByTagName("Application");
 			
+				name = nodesList[0].Attributes["name"].Value;
+				
 				// Verifies if there is only one Application settings for the file
 				if(nodesList.Count > 1)
 				{
@@ -124,27 +127,20 @@ namespace ideas.common
 		{
 			if(xmlTagsDatabasetNode.Name.ToLower() == "tagsdatabase")
 			{
+				// Instantiate a new tag database to be added to the project
 				IdeasScadaTagsDataBase tagsDatabaseToAdd = new IdeasScadaTagsDataBase();
 				
-				// TODO: tags database creation logic
+				string nodeName = xmlTagsDatabasetNode.Attributes["name"].Value;
+				string nodePath = tagsDatabaseToAdd.FilePath = xmlTagsDatabasetNode.Attributes["path"].Value;
+				string nodeStringSourceType = tagsDatabaseToAdd.Name = xmlTagsDatabasetNode.Attributes["type"].Value;
 				
-//				string nodeName = xmlScreenNode.Attributes["name"].Value;
-//				string nodePath = screenToAdd.FilePath = xmlScreenNode.Attributes["path"].Value;
-//				string nodeStringType = screenToAdd.Name = xmlScreenNode.Attributes["type"].Value;
-//				string nodeStringServerScriptLanguage = screenToAdd.Name = xmlScreenNode.Attributes["serverscriptlanguage"].Value;
-//				string nodeStringClientScriptLanguage = screenToAdd.Name = xmlScreenNode.Attributes["clientscriptlanguage"].Value;
-//				
-//				IdeasScadaScreenType nodeType = IdeasScadaScreen.convertScreenTypeFromString(nodeStringType);
-//				IdeasScadaScreenServerScriptLanguage nodeServerScriptLanguage = IdeasScadaScreen.convertScreenServerScriptLanguageFromString(nodeStringServerScriptLanguage);
-//				IdeasScadaScreenClientScriptLanguage nodeClientScriptLanguage = IdeasScadaScreen.convertScreenClientScriptLanguageFromString(nodeStringClientScriptLanguage);
-//				
-//				tagsDatabaseToAdd.Name = nodeName;
-//				tagsDatabaseToAdd.FilePath = nodePath;
-//				tagsDatabaseToAdd.Type = nodeType;
-//				tagsDatabaseToAdd.ServerScriptLanguage = nodeServerScriptLanguage;
-//				tagsDatabaseToAdd.ClientScriptLanguage = nodeClientScriptLanguage;
-//				
-//				project.Screens.Add(tagsDatabaseToAdd);
+				IdeasScadaTagsDataBaseSourceType nodeSourceType = IdeasScadaTagsDataBase.convertSourceTypeFromString(nodeStringSourceType);
+				
+				tagsDatabaseToAdd.Name = nodeName;
+				tagsDatabaseToAdd.FilePath = nodePath;
+				tagsDatabaseToAdd.SourceType = nodeSourceType;
+				
+				project.TagsDatabase = tagsDatabaseToAdd;
 			}
 		}
 		
@@ -186,6 +182,18 @@ namespace ideas.common
 			get 
 			{
 				return this.projects;
+			}
+		}
+		
+		public string Name 
+		{
+			get 
+			{
+				return this.name;
+			}
+			set 
+			{
+				name = value;
 			}
 		}
 		

@@ -84,11 +84,12 @@ public partial class MainWindow : Gtk.Window
 			return;
 		}
 		
+		expApplicationExpander.Label = scadaApplication.Name;
+		
 		foreach(IdeasScadaProject project in scadaApplication.Projects)
 		{
-			expApplicationExpander.Add(new Label("teste"));
-			//expApplicationExpander.Add(;
 			
+		
 		}
 		
 		

@@ -53,7 +53,7 @@ namespace ideas.common
 			}
 			catch(Exception e)
 			{
-				util.ShowErrorMessageDialog("The configuration file is invalid or corrupted. " + e.Message);
+				throw new Exception("The configuration file is invalid or corrupted. " + e.Message);
 			}
 		}
 		

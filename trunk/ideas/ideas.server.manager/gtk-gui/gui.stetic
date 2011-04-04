@@ -47,7 +47,7 @@
       </action>
       <action id="openAction">
         <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Open Application</property>
+        <property name="Label" translatable="yes">Open...</property>
         <property name="ShortLabel" translatable="yes">Open Application</property>
         <property name="StockId">gtk-open</property>
         <signal name="Activated" handler="mnuOpenApplication_Click" />
@@ -65,7 +65,7 @@
         <child>
           <widget class="Gtk.MenuBar" id="menubar3">
             <property name="MemberName" />
-            <node name="__gtksharp_92_Stetic_Editor_ActionMenuBar" type="Menubar">
+            <node name="menubar3" type="Menubar">
               <node type="Menu" action="FileAction">
                 <node type="Menuitem" action="quitAction" />
                 <node type="Menuitem" action="openAction" />
@@ -89,45 +89,15 @@
             <property name="CanFocus">True</property>
             <property name="Position">192</property>
             <child>
-              <widget class="Gtk.Frame" id="frame2">
+              <widget class="Gtk.ScrolledWindow" id="GtkScrolledWindow">
                 <property name="MemberName" />
-                <property name="ShadowType">None</property>
+                <property name="ShadowType">In</property>
                 <child>
-                  <widget class="Gtk.Alignment" id="GtkAlignment">
-                    <property name="MemberName" />
-                    <property name="Xalign">0</property>
-                    <property name="Yalign">0</property>
-                    <property name="LeftPadding">12</property>
-                    <child>
-                      <widget class="Gtk.Expander" id="expApplicationExpander">
-                        <property name="MemberName">expApplicationExpander</property>
-                        <property name="CanFocus">True</property>
-                        <child>
-                          <placeholder />
-                        </child>
-                        <child>
-                          <widget class="Gtk.Label" id="GtkLabel5">
-                            <property name="MemberName" />
-                            <property name="LabelProp" translatable="yes">GtkExpander</property>
-                            <property name="UseUnderline">True</property>
-                          </widget>
-                          <packing>
-                            <property name="type">label_item</property>
-                          </packing>
-                        </child>
-                      </widget>
-                    </child>
+                  <widget class="Gtk.TreeView" id="applicationTreeView">
+                    <property name="MemberName">applicationTreeView</property>
+                    <property name="CanFocus">True</property>
+                    <property name="ShowScrollbars">True</property>
                   </widget>
-                </child>
-                <child>
-                  <widget class="Gtk.Label" id="fmeApplicationsFrame">
-                    <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">&lt;b&gt;Applications&lt;/b&gt;</property>
-                    <property name="UseMarkup">True</property>
-                  </widget>
-                  <packing>
-                    <property name="type">label_item</property>
-                  </packing>
                 </child>
               </widget>
               <packing>

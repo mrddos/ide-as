@@ -98,10 +98,10 @@ namespace ideas.common
 				IdeasScadaScreen screenToAdd = new IdeasScadaScreen();		
 				
 				string nodeName = xmlScreenNode.Attributes["name"].Value;
-				string nodePath = screenToAdd.FilePath = xmlScreenNode.Attributes["path"].Value;
-				string nodeStringType = screenToAdd.Name = xmlScreenNode.Attributes["type"].Value;
-				string nodeStringServerScriptLanguage = screenToAdd.Name = xmlScreenNode.Attributes["serverscriptlanguage"].Value;
-				string nodeStringClientScriptLanguage = screenToAdd.Name = xmlScreenNode.Attributes["clientscriptlanguage"].Value;
+				string nodePath = xmlScreenNode.Attributes["path"].Value;
+				string nodeStringType = xmlScreenNode.Attributes["type"].Value;
+				string nodeStringServerScriptLanguage = xmlScreenNode.Attributes["serverscriptlanguage"].Value;
+				string nodeStringClientScriptLanguage = xmlScreenNode.Attributes["clientscriptlanguage"].Value;
 				
 				IdeasScadaScreenType nodeType = IdeasScadaScreen.convertScreenTypeFromString(nodeStringType);
 				IdeasScadaScreenServerScriptLanguage nodeServerScriptLanguage = IdeasScadaScreen.convertScreenServerScriptLanguageFromString(nodeStringServerScriptLanguage);
@@ -131,8 +131,8 @@ namespace ideas.common
 				IdeasScadaTagsDataBase tagsDatabaseToAdd = new IdeasScadaTagsDataBase();
 				
 				string nodeName = xmlTagsDatabasetNode.Attributes["name"].Value;
-				string nodePath = tagsDatabaseToAdd.FilePath = xmlTagsDatabasetNode.Attributes["path"].Value;
-				string nodeStringSourceType = tagsDatabaseToAdd.Name = xmlTagsDatabasetNode.Attributes["type"].Value;
+				string nodePath = xmlTagsDatabasetNode.Attributes["path"].Value;
+				string nodeStringSourceType = xmlTagsDatabasetNode.Attributes["type"].Value;
 				
 				IdeasScadaTagsDataBaseSourceType nodeSourceType = IdeasScadaTagsDataBase.convertSourceTypeFromString(nodeStringSourceType);
 				
@@ -154,7 +154,18 @@ namespace ideas.common
 		{
 			if(xmlTagsWebserviceNode.Name.ToLower() == "tagswebservice")
 			{
-				// TODO: tags webservice creation logic					
+				// Instantiate a new tag database to be added to the project
+				IdeasScadaTagsWebService tagsWebserviceToAdd = new IdeasScadaTagsWebService();
+				
+				string nodeName = xmlTagsWebserviceNode.Attributes["name"].Value;
+				string nodeServerPort = xmlTagsWebserviceNode.Attributes["port"].Value;
+				string nodeServerAddress = xmlTagsWebserviceNode.Attributes["address"].Value;
+						
+				tagsWebserviceToAdd.Name = nodeName;
+				tagsWebserviceToAdd.ServerPort = Convert.ToInt32(nodeServerPort);
+				tagsWebserviceToAdd.ServerAddress = nodeServerAddress;
+				
+				project.TagsWebService = tagsWebserviceToAdd;
 			}
 		}
 			

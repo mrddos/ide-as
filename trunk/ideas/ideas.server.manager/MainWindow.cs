@@ -79,40 +79,48 @@ public partial class MainWindow : Gtk.Window
 	
 	protected void UpdateScadaApplicationsListTree ()
 	{
+		// Check if a scada app was already loaded
 		if(scadaApplication == null)
 		{
 			return;
 		}
 		
-		expApplicationExpander.Label = scadaApplication.Name;
+		TreeViewColumn artistColumn = new TreeViewColumn ();
+		artistColumn.Title = "Application";
+ 
+		Gtk.CellRendererText artistNameCell = new Gtk.CellRendererText ();
+		
+		artistColumn.PackStart (artistNameCell, true);
+  
+		applicationTreeView.AppendColumn (artistColumn);
+		
+		artistColumn.AddAttribute (artistNameCell, "text", 0);		
+		
+		
+		TreeStore applicationTreeStore = new TreeStore(typeof (string));
+		Gtk.TreeIter applicationIter = applicationTreeStore.AppendValues (scadaApplication.Name);	
 		
 		foreach(IdeasScadaProject project in scadaApplication.Projects)
 		{
+			Gtk.TreeIter projectIter = applicationTreeStore.AppendValues(applicationIter, project.Name);
 			
-		
+			Gtk.TreeIter screensIter = applicationTreeStore.AppendValues(projectIter, "Screens");
+			
+			foreach(IdeasScadaScreen screen in project.Screens)
+			{
+				applicationTreeStore.AppendValues(screensIter, screen.Name);
+			}
+			
+			Gtk.TreeIter tagsDatabaseIter = applicationTreeStore.AppendValues(projectIter, "Tags Database");
+			applicationTreeStore.AppendValues(tagsDatabaseIter, project.TagsDatabase.Name);
+			
+			Gtk.TreeIter tagsWebserviceIter = applicationTreeStore.AppendValues(projectIter, "Tags WebService");
+			applicationTreeStore.AppendValues(tagsWebserviceIter, project.TagsWebService.Name);
 		}
 		
-		
-	}
-	
-	/// <summary>
-	/// Shows a regular message dialog with custom text
-	/// </summary>
-	/// <param name="textString">
-	/// A <see cref="System.String"/>
-	/// </param>
-	public static void ShowErrorMessageDialog(string textString)
-	{
-		MessageDialog msgDialog = 
-				new MessageDialog(
-				    null, 
-					DialogFlags.Modal,
-					MessageType.Error,
-					ButtonsType.Ok,
-					textString);
+		applicationTreeView.Model = applicationTreeStore;
 			
-			msgDialog.Run();
-			msgDialog.Destroy();		
+		this.ShowAll();
 	}
 
 }

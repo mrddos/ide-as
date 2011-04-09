@@ -51,6 +51,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="IdeasWebservice\TagsServer.asmx" />
+    <Folder Include="IdeasWebservice\" />
   </ItemGroup>
 </Project>

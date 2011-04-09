@@ -8,12 +8,36 @@ public partial class MainWindow : Gtk.Window
 {
 	static IdeasScadaApplication scadaApplication;
 	
-	
+	/// <summary>
+	/// Default constructor
+	/// </summary>
 	public MainWindow () : base(Gtk.WindowType.Toplevel)
 	{
 		Build ();
-		
+
 		scadaApplication = null;
+
+	}
+	
+	/// <summary>
+	/// Constructor from a Configuration setup
+	/// </summary>
+	/// <param name="config">
+	/// A <see cref="Configuration"/>
+	/// </param>
+	public MainWindow (Configuration config) : base(Gtk.WindowType.Toplevel)
+	{
+		Build ();
+		
+		if(config == null)
+		{
+			scadaApplication = null;
+		}
+		else
+		{
+			scadaApplication = new IdeasScadaApplication(config.file);
+			UpdateScadaApplicationsListTree ();
+		}
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -119,8 +143,37 @@ public partial class MainWindow : Gtk.Window
 		}
 		
 		applicationTreeView.Model = applicationTreeStore;
+		
+		applicationTreeView.ExpandAll();
 			
 		this.ShowAll();
 	}
 
+	protected virtual void aboutAction_Click (object sender, System.EventArgs e)
+	{
+		About aboutDialog = new About();
+		
+		aboutDialog.Show();
+	}
+	
+	protected virtual void btnStart_Click (object sender, System.EventArgs e)
+	{
+		foreach(IdeasScadaProject project in scadaApplication.Projects)
+		{
+			project.TagsWebService.Start();
+		}
+		
+		(sender as Gtk.Button).Sensitive = false;
+	}
+	
+	protected virtual void btnStop_Click (object sender, System.EventArgs e)
+	{
+		foreach(IdeasScadaProject project in scadaApplication.Projects)
+		{
+			project.TagsWebService.Stop();
+		}
+	}
+	
+	
+	
 }

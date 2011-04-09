@@ -18,7 +18,7 @@ namespace TagsServer
   
   
         [WebMethod]
-        public int GetTagValues (string tagname)
+        public int GetTagValue (string tagname)
         {
             Random random = new Random();
             

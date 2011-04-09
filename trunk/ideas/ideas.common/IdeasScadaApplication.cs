@@ -36,7 +36,13 @@ namespace ideas.common
 			
 				XmlNodeList nodesList = xmlScadaFile.GetElementsByTagName("Application");
 			
-				name = nodesList[0].Attributes["name"].Value;
+				this.name = nodesList[0].Attributes["name"].Value;
+				
+				// Saves the path to the Scada file
+				this.filePath = scadafile;
+				
+				// Saves the root path
+				this.rootPath = Path.GetDirectoryName(scadafile);
 				
 				// Verifies if there is only one Application settings for the file
 				if(nodesList.Count > 1)
@@ -46,12 +52,7 @@ namespace ideas.common
 								
 				// Loads application settings
 				LoadProjectSettings(xmlScadaFile);
-				
-				// Saves the path to the Scada file
-				filePath = scadafile;
-				
-				// Saves the root path
-				rootPath = Path.GetDirectoryName(scadafile);
+							
 
 			}
 			catch(Exception e)
@@ -71,7 +72,7 @@ namespace ideas.common
 				
 				IdeasScadaProject projectToAdd = new IdeasScadaProject();
 				projectToAdd.Name = nodeName;
-				projectToAdd.FilePath = nodePath;
+				projectToAdd.FilePath = this.RootPath + "/" + nodePath;
 				
 				foreach(XmlNode childNode in node.ChildNodes)
 				{
@@ -108,7 +109,7 @@ namespace ideas.common
 				IdeasScadaScreenClientScriptLanguage nodeClientScriptLanguage = IdeasScadaScreen.convertScreenClientScriptLanguageFromString(nodeStringClientScriptLanguage);
 				
 				screenToAdd.Name = nodeName;
-				screenToAdd.FilePath = nodePath;
+				screenToAdd.FilePath = this.FilePath + nodePath;
 				screenToAdd.Type = nodeType;
 				screenToAdd.ServerScriptLanguage = nodeServerScriptLanguage;
 				screenToAdd.ClientScriptLanguage = nodeClientScriptLanguage;
@@ -137,7 +138,7 @@ namespace ideas.common
 				IdeasScadaTagsDataBaseSourceType nodeSourceType = IdeasScadaTagsDataBase.convertSourceTypeFromString(nodeStringSourceType);
 				
 				tagsDatabaseToAdd.Name = nodeName;
-				tagsDatabaseToAdd.FilePath = nodePath;
+				tagsDatabaseToAdd.FilePath = project.FilePath + nodePath;
 				tagsDatabaseToAdd.SourceType = nodeSourceType;
 				
 				project.TagsDatabase = tagsDatabaseToAdd;
@@ -164,6 +165,7 @@ namespace ideas.common
 				tagsWebserviceToAdd.Name = nodeName;
 				tagsWebserviceToAdd.ServerPort = Convert.ToInt32(nodeServerPort);
 				tagsWebserviceToAdd.ServerAddress = nodeServerAddress;
+				tagsWebserviceToAdd.ServerRootPath = project.FilePath + "screens/";
 				
 				project.TagsWebService = tagsWebserviceToAdd;
 			}

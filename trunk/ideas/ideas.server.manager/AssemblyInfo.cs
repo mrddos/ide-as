@@ -5,13 +5,17 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("ideas.server.manager")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Manager for IDEAS Scada Servers")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
+// Attributes visible in " -V"
+[assembly: Mono.About("Manager for IDEAS Scada Servers")]
+[assembly: Mono.Author ("Luiz Cançado")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,

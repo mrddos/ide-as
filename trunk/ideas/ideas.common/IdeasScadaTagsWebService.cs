@@ -1,17 +1,21 @@
 using System;
 using System.Xml;
 using System.IO;
-using ideas.common;
 using System.Collections.Generic;
+using Mono.WebServer;
+using ideas.common;
+using System.Net;
+
 
 namespace ideas.common
 {
 	public class IdeasScadaTagsWebService
 	{
 		private string name;
-		private string filePath;
 		private int serverPort;
 		private string serverAddress;
+		private string serverRootPath;
+		private ApplicationServer webAppServer;	
 		
 		/// <summary>
 		/// Constructs the class
@@ -20,6 +24,27 @@ namespace ideas.common
 		{
 			
 		}
+		
+		#region PUBLIC METHODS
+		
+		public void Start()
+		{		
+			XSPWebSource websource = new XSPWebSource(IPAddress.Any, this.ServerPort);
+			    
+			webAppServer = new ApplicationServer(websource);
+			
+			//"[[hostname:]port:]VPath:realpath"
+			string cmdLine = this.ServerPort + ":/:" + serverRootPath;
+			webAppServer.AddApplicationsFromCommandLine(cmdLine);
+			webAppServer.Start(true);
+		}
+		
+		public void Stop()
+		{
+			webAppServer.Stop();
+		}
+		
+		#endregion
 		
 		#region PROPERTIES
 		
@@ -32,18 +57,6 @@ namespace ideas.common
 			set
 			{
 				this.name = value;
-			}
-		}
-
-		public string FilePath 
-		{
-			get 
-			{
-				return this.filePath;
-			}
-			set
-			{
-				this.filePath = value;
 			}
 		}
 		
@@ -68,6 +81,18 @@ namespace ideas.common
 			set
 			{
 				this.serverAddress = value;
+			}
+		}
+		
+		public string ServerRootPath 
+		{
+			get 
+			{
+				return this.serverRootPath;
+			}
+			set
+			{
+				serverRootPath = value;
 			}
 		}
 		

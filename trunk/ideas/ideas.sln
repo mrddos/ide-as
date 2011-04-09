@@ -5,9 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ideas.server.manager", "ide
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ideas.client", "ideas.client\ideas.client.csproj", "{EE6C1C4B-0388-49B4-89F7-BA6AB8D88B78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ideas.server", "ideas.server\ideas.server.csproj", "{7DDF7703-FC93-4126-8CC4-878C1CC6545F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ideas.server.tagsdatabase", "ideas.server\ideas.server.tagsdatabase.csproj", "{7DDF7703-FC93-4126-8CC4-878C1CC6545F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ideas.common", "ideas.common\ideas.common.csproj", "{24677F3D-E07D-4BC2-885C-F8CAF90F214D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ideas.server.webservice", "ideas.server.webservice\ideas.server.webservice.csproj", "{2DEEC744-1B61-49EB-9A7F-36C090377DC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,10 @@ Global
 		{24677F3D-E07D-4BC2-885C-F8CAF90F214D}.Debug|x86.Build.0 = Debug|Any CPU
 		{24677F3D-E07D-4BC2-885C-F8CAF90F214D}.Release|x86.ActiveCfg = Release|Any CPU
 		{24677F3D-E07D-4BC2-885C-F8CAF90F214D}.Release|x86.Build.0 = Release|Any CPU
+		{2DEEC744-1B61-49EB-9A7F-36C090377DC6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2DEEC744-1B61-49EB-9A7F-36C090377DC6}.Debug|x86.Build.0 = Debug|Any CPU
+		{2DEEC744-1B61-49EB-9A7F-36C090377DC6}.Release|x86.ActiveCfg = Release|Any CPU
+		{2DEEC744-1B61-49EB-9A7F-36C090377DC6}.Release|x86.Build.0 = Release|Any CPU
 		{7DDF7703-FC93-4126-8CC4-878C1CC6545F}.Debug|x86.ActiveCfg = Debug|x86
 		{7DDF7703-FC93-4126-8CC4-878C1CC6545F}.Debug|x86.Build.0 = Debug|x86
 		{7DDF7703-FC93-4126-8CC4-878C1CC6545F}.Release|x86.ActiveCfg = Release|x86

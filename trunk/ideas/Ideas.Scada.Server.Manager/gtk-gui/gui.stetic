@@ -14,6 +14,14 @@
         <property name="Image">stock:gtk-about Menu</property>
       </source>
     </icon-set>
+    <icon-set id="ideas.scada">
+      <source>
+        <property name="Image">file:./icon_24x24.png</property>
+      </source>
+      <source>
+        <property name="Image">file:./icon_32x32.png</property>
+      </source>
+    </icon-set>
   </icon-factory>
   <widget class="Gtk.Window" id="MainWindow" design-size="607 419">
     <action-group name="Default">
@@ -104,6 +112,7 @@
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">IDEAS Server Management</property>
+    <property name="Icon">resource:Ideas.Scada.Server.Manager.Resources.Icons.icon_32x32.png</property>
     <property name="WindowPosition">Center</property>
     <property name="DefaultWidth">800</property>
     <property name="DefaultHeight">600</property>

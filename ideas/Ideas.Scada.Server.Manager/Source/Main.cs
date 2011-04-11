@@ -1,14 +1,19 @@
 using System;
 using Gtk;
+using Gdk;
 
 
 namespace Ideas.Server.Manager
 {
 	class MainClass
 	{
+		
+		private static MainWindow win;
+		private static StatusIcon trayIcon;
+		
 		public static void Main (string[] args)
 		{
-			MainWindow win;
+			
 			
 			// Inicia a aplicacao
 			Application.Init ();
@@ -37,7 +42,20 @@ namespace Ideas.Server.Manager
 				win = new MainWindow(config);
 			}
 			
-			win.Show ();
+			// Attach to the Delete Event when the window has been closed.
+			win.DeleteEvent += delegate { Application.Quit (); };
+			
+			// Creation of the Icon
+			trayIcon = new StatusIcon(Gdk.Pixbuf.LoadFromResource ("Ideas.Scada.Server.Manager.Resources.Icons.icon_16x16.png"));
+			trayIcon.Visible = true;
+			
+			// Show/Hide the window (even from the Panel/Taskbar) when the TrayIcon has been clicked.
+			trayIcon.Activate += delegate { win.Visible = !win.Visible; };
+			
+			// A Tooltip for the Icon
+			trayIcon.Tooltip = "Ideas Server Manager";
+			
+			win.ShowAll ();
 			Application.Run ();
 		}
 	}

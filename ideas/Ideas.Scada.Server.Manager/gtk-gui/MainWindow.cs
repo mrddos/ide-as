@@ -94,6 +94,7 @@ public partial class MainWindow
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("IDEAS Server Management");
+		this.Icon = global::Gdk.Pixbuf.LoadFromResource ("Ideas.Scada.Server.Manager.Resources.Icons.icon_32x32.png");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
 		this.DefaultWidth = 800;
 		this.DefaultHeight = 600;

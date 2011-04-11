@@ -13,6 +13,14 @@ namespace Stetic
 				global::Gtk.IconFactory w1 = new global::Gtk.IconFactory ();
 				global::Gtk.IconSet w2 = new global::Gtk.IconSet (global::Stetic.IconLoader.LoadIcon (iconRenderer, "gtk-about", global::Gtk.IconSize.Menu));
 				w1.Add ("gtk-about", w2);
+				global::Gtk.IconSet w3 = new global::Gtk.IconSet ();
+				global::Gtk.IconSource w4 = new global::Gtk.IconSource ();
+				w4.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./icon_24x24.png"));
+				w3.AddSource (w4);
+				global::Gtk.IconSource w5 = new global::Gtk.IconSource ();
+				w5.Pixbuf = new global::Gdk.Pixbuf (global::System.IO.Path.Combine (global::System.AppDomain.CurrentDomain.BaseDirectory, "./icon_32x32.png"));
+				w3.AddSource (w5);
+				w1.Add ("ideas.scada", w3);
 				w1.AddDefault ();
 			}
 		}
